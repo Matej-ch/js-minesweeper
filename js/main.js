@@ -9,6 +9,21 @@ document.addEventListener('DOMContentLoaded', () => {
   let isGameOver = false;
   //create board
 
+  function shuffleArray(gameArray) {
+    let length = gameArray.length;
+    let shuffledArray = new Array(length);
+    let taken = new Array(length);
+
+    let n = gameArray.length;
+    while (n--) {
+      let x = Math.floor(Math.random() * length);
+      shuffledArray[n] = gameArray[x in taken ? taken[x] : x];
+      taken[x] = --length in taken ? taken[length] : length;
+    }
+
+    return shuffledArray;
+  }
+
   function createBoard() {
 
     flagsLeft.innerHTML = `${bombAmount}`;
@@ -21,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const gameArray = emptyArray.concat(bombsArray);
 
-    let shuffledArray = gameArray.sort(() => Math.random() -0.5);
+    let shuffledArray = shuffleArray(gameArray);
 
     for(let i = 0; i < width * width ; i++) {
       const square = document.createElement('div')
