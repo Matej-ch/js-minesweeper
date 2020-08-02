@@ -225,3 +225,8 @@ textarea {
   color: #e76346;
 }
 
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+}
+

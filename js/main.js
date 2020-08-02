@@ -1,14 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const grid = document.querySelector('.grid');
-  const flagsLeft = document.querySelector('#flags-left')
-  const result = document.querySelector('#result')
-  let width = 10
-  let bombAmount = 20;
+  let grid = document.querySelector('.grid');
+  let flagsLeft = document.querySelector('#flags-left')
+  let result = document.querySelector('#result')
+  let width = parseInt(document.getElementById('widthInput').value);
+  let bombAmount = parseInt(document.getElementById('bombInput').value);
   let flags = 0;
   let squares = [];
   let isGameOver = false;
-  //create board
 
+  //create board
   function shuffleArray(gameArray) {
     let length = gameArray.length;
     let shuffledArray = new Array(length);
@@ -188,7 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },10)
   }
 
-  function gameOver(square) {
+  function gameOver() {
     console.log('booom goes the dynamite');
     isGameOver = true;
 
@@ -214,5 +214,24 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   }
+
+
+  function resetGame() {
+    grid = document.querySelector('.grid');
+    flagsLeft = document.querySelector('#flags-left')
+    result = document.querySelector('#result')
+    width = parseInt(document.getElementById('widthInput').value);
+    bombAmount = parseInt(document.getElementById('bombInput').value);
+    flags = 0;
+    squares = [];
+    isGameOver = false;
+    document.getElementById('grid').style.width = `${width * 40}px`;
+    document.getElementById('grid').style.height = `${width * 40}px`;
+    createBoard();
+  }
+
+  document.getElementById('reset').addEventListener('click', (e) => {
+    resetGame();
+  })
 
 })
