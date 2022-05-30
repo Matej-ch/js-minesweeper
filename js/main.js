@@ -1,12 +1,30 @@
 document.addEventListener('DOMContentLoaded', () => {
   let grid = document.querySelector('.grid');
-  let flagsLeft = document.querySelector('#flags-left')
-  let result = document.querySelector('#result')
-  let width = parseInt(document.getElementById('widthInput').value);
-  let bombAmount = parseInt(document.getElementById('bombInput').value);
-  let flags = 0;
+
+
   let squares = [];
+  let bombAmount = parseInt(document.getElementById('js-bombs-input').value);
+
+  let flagsLeft = document.querySelector('#flags-left');
+  let result = document.querySelector('#result');
+
+  let width = 10;
+  let flags = 0;
   let isGameOver = false;
+
+  const outputEls = {
+    flagsLeft: document.querySelector('#flags-left'),
+    result: document.querySelector('#result'),
+    grid: document.querySelector('.grid'),
+  }
+
+  const gameState = {
+    isGameOver: false,
+    flags: 0,
+    width: 10,
+    bombAmount: parseInt(document.getElementById('js-bombs-input').value),
+    difficulty: document.getElementById('js-difficulty-input').value,
+  }
 
   //create board
   function shuffleArray(gameArray) {
@@ -220,8 +238,8 @@ document.addEventListener('DOMContentLoaded', () => {
     grid = document.querySelector('.grid');
     flagsLeft = document.querySelector('#flags-left')
     result = document.querySelector('#result')
-    width = parseInt(document.getElementById('widthInput').value);
-    bombAmount = parseInt(document.getElementById('bombInput').value);
+    width = 10;
+    bombAmount = parseInt(document.getElementById('js-bombs-input').value);
     flags = 0;
     squares = [];
     isGameOver = false;

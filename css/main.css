@@ -175,6 +175,7 @@ textarea {
   display: flex;
   flex-wrap: wrap;
   background: gray;
+  margin: auto;
 }
 
 .grid div {
@@ -228,5 +229,28 @@ textarea {
 .controls {
   display: flex;
   flex-wrap: wrap;
+  padding-top: 1rem;
+  width: 400px;
+  margin: auto;
+
+}
+
+.flags-left {
+  padding-top: 1rem;
+  font-weight: bold;
+  font-size: 1.5rem;
+  width: 400px;
+  margin: auto;
+}
+
+.flags-left::before {
+  content: 'Flags remaining: ';
+}
+
+.btn-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1rem;
 }
 

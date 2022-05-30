@@ -27,21 +27,27 @@
 
   <div class="controls">
     <div>
-      <label>Width
-        <input type="number" value="10" id="widthInput" step="10" min="10">
+      <label>Difficulty
+        <select name="difficulty" id="js-difficulty-input">
+          <option value="easy">Easy</option>
+          <option value="medium">Medium</option>
+          <option value="hard">Hard</option>
+          <option value="ultra">Ultra</option>
+        </select>
       </label>
     </div>
     <div>
       <label>Bombs
-        <input type="text" value="20" id="bombInput">
+        <input type="text" value="20" id="js-bombs-input">
       </label>
     </div>
-    <div>
-      <button id="reset">Reset</button>
+    <div class="btn-container">
+      <button id="js-play">Play</button>
+      <button id="js-reset">Reset</button>
     </div>
   </div>
 
-  <div id="flags-left"></div>
+  <div class="flags-left" id="flags-left"></div>
   <div id="result"></div>
   <script src="js/main.js"></script>
 
