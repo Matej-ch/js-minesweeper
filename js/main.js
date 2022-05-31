@@ -62,7 +62,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-
     for (let i = 0; i < squares.length; i++) {
 
       let total = 0;
@@ -261,6 +260,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function playAgain() {
 
+    gameState.isGameOver = false;
+    gameState.flags = 0;
+    gameState.width = 10;
+    gameState.bombAmount = document.getElementById('js-bombs-input').value;
+    gameState.difficulty = document.getElementById('js-difficulty-input').value;
+
+    outputEls.result.innerHTML = '';
+    outputEls.result.classList.remove('win', 'lose');
+
+    outputEls.grid.innerHTML = '';
+    squares = [];
+
+    createBoard();
   }
 
   document.querySelector('body').addEventListener('click', e => {
