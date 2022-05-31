@@ -108,8 +108,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  createBoard();
-
   function addFlag(square) {
     if (gameState.isGameOver) return
     if (!square.classList.contains('checked') && (gameState.flags < gameState.bombAmount)) {
@@ -242,17 +240,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   function resetGame() {
-    outputEls.grid = document.querySelector('.grid');
-    outputEls.flagsLeft = document.querySelector('#flags-left')
-    outputEls.result = document.querySelector('#result');
-    outputEls.result.classList.remove('win', 'lose');
-    gameState.width = 10;
-    gameState.bombAmount = parseInt(document.getElementById('js-bombs-input').value);
-    gameState.flags = 0;
-    squares = [];
+
+    document.getElementById('js-difficulty-input').value = 'easy';
+    document.getElementById('js-bombs-input').value = 20;
+
     gameState.isGameOver = false;
-    document.getElementById('grid').style.width = `${gameState.width * 40}px`;
-    document.getElementById('grid').style.height = `${gameState.width * 40}px`;
+    gameState.flags = 0;
+    gameState.width = 10;
+    gameState.bombAmount = 20;
+    gameState.difficulty = 'easy';
+
+    outputEls.result.innerHTML = '';
+    outputEls.result.classList.remove('win', 'lose');
+
+    outputEls.grid.innerHTML = '';
+    squares = [];
+
     createBoard();
   }
 
@@ -269,4 +272,6 @@ document.addEventListener('DOMContentLoaded', () => {
       playAgain();
     }
   })
+
+  createBoard();
 })
