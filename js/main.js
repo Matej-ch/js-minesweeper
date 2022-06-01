@@ -33,6 +33,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function createBoard() {
 
+    document.getElementById('js-bombs-input').setAttribute('max',`${gameState.width * gameState.width - 1}`);
+
+    if(document.getElementById('js-bombs-input').value >= gameState.width * gameState.width) {
+      document.getElementById('js-bombs-input').value = gameState.width * gameState.width - 1;
+      gameState.bombAmount =  gameState.width * gameState.width - 1;
+    }
+
     outputEls.flagsLeft.innerHTML = `${gameState.bombAmount}`;
 
     //random bombs set
@@ -263,7 +270,7 @@ document.addEventListener('DOMContentLoaded', () => {
     gameState.isGameOver = false;
     gameState.flags = 0;
     gameState.width = 10;
-    gameState.bombAmount = document.getElementById('js-bombs-input').value;
+    gameState.bombAmount = parseInt(document.getElementById('js-bombs-input').value);
     gameState.difficulty = document.getElementById('js-difficulty-input').value;
 
     outputEls.result.innerHTML = '';
