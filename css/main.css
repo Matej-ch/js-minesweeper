@@ -19,6 +19,7 @@ html {
   color: #222;
   font-size: 1em;
   line-height: 1.4;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 /*
@@ -176,6 +177,7 @@ textarea {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-weight: bold;
 }
 
 .valid {
@@ -238,6 +240,7 @@ textarea {
   padding-top: 1rem;
   width: 400px;
   margin: auto;
+  justify-content: space-between;
 
 }
 
