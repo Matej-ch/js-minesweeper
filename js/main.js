@@ -18,10 +18,10 @@ document.addEventListener('DOMContentLoaded', () => {
   //create board
   function shuffleArray(gameArray) {
     let length = gameArray.length;
+    let n = gameArray.length;
     let shuffledArray = new Array(length);
     let taken = new Array(length);
 
-    let n = gameArray.length;
     while (n--) {
       let x = Math.floor(Math.random() * length);
       shuffledArray[n] = gameArray[x in taken ? taken[x] : x];

@@ -225,6 +225,8 @@ textarea {
 #result.win {
   background-color: #57da59;
   padding: 1rem;
+  width: 400px;
+  margin: auto;
 }
 
 #result.lose {
