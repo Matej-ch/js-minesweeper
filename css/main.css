@@ -60,16 +60,6 @@ textarea {
   visibility: hidden;
 }
 
-.clearfix::before,
-.clearfix::after {
-  content: " ";
-  display: table;
-}
-
-.clearfix::after {
-  clear: both;
-}
-
 .grid {
   height: 400px;
   width: 400px;
@@ -91,16 +81,12 @@ textarea {
 .valid {
   height: 40px;
   width: 40px;
-  border: 2px solid;
-  border-color: #f5f3eb #bab7a9 #bab7a9 #fff9db;
-  box-sizing: border-box;
 }
 
 
-.bomb {
+.square-border {
   border: 2px solid;
   border-color: #f5f3eb #bab7a9 #bab7a9 #fff9db;
-  box-sizing: border-box;
 }
 
 .checked {

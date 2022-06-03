@@ -9,8 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const difficulties = {
     easy: {bombs: 20, width: 10},
-    medium: {bombs: 30, width: 20},
-    hard: {bombs: 40, width: 30},
+    medium: {bombs: 30, width: 15},
+    hard: {bombs: 40, width: 20},
     ultra: {bombs: 60, width: 40},
     custom: {
       bombs: () => {
@@ -18,10 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
       },
       width: 10
     },
-  }
-
-  const gridSizes = {
-    easy: 400,
   }
 
   const gameState = {
@@ -71,8 +67,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     for (let i = 0; i < gameState.width * gameState.width; i++) {
       const square = document.createElement('div')
+
       square.setAttribute('id', `${i}`);
-      square.classList.add(shuffledArray[i]);
+      square.classList.add(shuffledArray[i], 'square-border');
       outputEls.grid.appendChild(square);
       squares.push(square);
 
