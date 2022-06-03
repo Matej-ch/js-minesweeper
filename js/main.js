@@ -20,6 +20,10 @@ document.addEventListener('DOMContentLoaded', () => {
     },
   }
 
+  const gridSizes = {
+    easy: 400,
+  }
+
   const gameState = {
     isGameOver: false,
     flags: 0,
