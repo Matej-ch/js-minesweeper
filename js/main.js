@@ -7,6 +7,19 @@ document.addEventListener('DOMContentLoaded', () => {
     grid: document.querySelector('.grid'),
   }
 
+  const difficulties = {
+    easy: {bombs: 20, width: 10},
+    medium: {bombs: 30, width: 20},
+    hard: {bombs: 40, width: 30},
+    ultra: {bombs: 60, width: 40},
+    custom: {
+      bombs: () => {
+        return document.getElementById('js-bombs-input').value
+      },
+      width: 10
+    },
+  }
+
   const gameState = {
     isGameOver: false,
     flags: 0,
@@ -33,11 +46,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function createBoard() {
 
-    document.getElementById('js-bombs-input').setAttribute('max',`${gameState.width * gameState.width - 1}`);
+    document.getElementById('js-bombs-input').setAttribute('max', `${gameState.width * gameState.width - 1}`);
 
-    if(document.getElementById('js-bombs-input').value >= gameState.width * gameState.width) {
+    if (document.getElementById('js-bombs-input').value >= gameState.width * gameState.width) {
       document.getElementById('js-bombs-input').value = gameState.width * gameState.width - 1;
-      gameState.bombAmount =  gameState.width * gameState.width - 1;
+      gameState.bombAmount = gameState.width * gameState.width - 1;
     }
 
     outputEls.flagsLeft.innerHTML = `${gameState.bombAmount}`;
@@ -249,7 +262,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('js-difficulty-input').value = 'easy';
     document.getElementById('js-bombs-input').value = 20;
-
+    document.getElementById('js-bomb-count-text').innerText = '20';
     gameState.isGameOver = false;
     gameState.flags = 0;
     gameState.width = 10;
@@ -267,11 +280,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function playAgain() {
 
+    const difficultySelect = document.getElementById('js-difficulty-input');
+
     gameState.isGameOver = false;
     gameState.flags = 0;
-    gameState.width = 10;
-    gameState.bombAmount = parseInt(document.getElementById('js-bombs-input').value);
-    gameState.difficulty = document.getElementById('js-difficulty-input').value;
+    gameState.width = difficulties[difficultySelect.value].width;
+
+    if (difficultySelect.value === 'custom') {
+      gameState.bombAmount = difficulties[difficultySelect.value].bombs();
+    } else {
+      gameState.bombAmount = difficulties[difficultySelect.value].bombs;
+    }
+
+    gameState.difficulty = difficultySelect.value;
 
     outputEls.result.innerHTML = '';
     outputEls.result.classList.remove('win', 'lose');
@@ -289,6 +310,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (e.target.id === 'js-play') {
       playAgain();
+    }
+  })
+
+  document.querySelector('body').addEventListener('change', e => {
+    if (e.target.id === 'js-difficulty-input') {
+      if (e.target.value === 'custom') {
+        document.getElementById('js-bomb-count-text').classList.add('hidden');
+        document.getElementById('js-bombs-input').classList.remove('hidden');
+        gameState.bombAmount = difficulties[e.target.value].bombs();
+      } else {
+        document.getElementById('js-bomb-count-text').classList.remove('hidden');
+        document.getElementById('js-bombs-input').classList.add('hidden');
+        document.getElementById('js-bomb-count-text').innerText = difficulties[e.target.value].bombs;
+        gameState.bombAmount = difficulties[e.target.value].bombs;
+      }
+
+      gameState.difficulty = e.target.value;
+      gameState.width = difficulties[e.target.value].width;
     }
   })
 

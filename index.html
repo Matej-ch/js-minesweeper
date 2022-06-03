@@ -20,36 +20,37 @@
 
 <body>
 
-  <div class="grid" id="grid">
+<div class="grid" id="grid">
 
+</div>
+
+
+<div class="controls">
+  <div>
+    <label>Difficulty
+      <select name="difficulty" id="js-difficulty-input">
+        <option value="easy">Easy</option>
+        <option value="medium">Medium</option>
+        <option value="hard">Hard</option>
+        <option value="ultra">Ultra</option>
+        <option value="custom">Custom</option>
+      </select>
+    </label>
   </div>
-
-
-  <div class="controls">
-    <div>
-      <label>Difficulty
-        <select name="difficulty" id="js-difficulty-input">
-          <option value="easy">Easy</option>
-          <option value="medium">Medium</option>
-          <option value="hard">Hard</option>
-          <option value="ultra">Ultra</option>
-        </select>
-      </label>
-    </div>
-    <div>
-      <label>Bombs
-        <input type="number" step="1" min="1" value="20" id="js-bombs-input">
-      </label>
-    </div>
-    <div class="btn-container">
-      <button id="js-play">Play</button>
-      <button id="js-reset">Reset</button>
-    </div>
+  <div>
+    <label>Bombs <span id="js-bomb-count-text" class="font-bold">20</span>
+      <input type="number" step="1" min="1" value="20" id="js-bombs-input" class="hidden">
+    </label>
   </div>
+  <div class="btn-container">
+    <button id="js-play">Play</button>
+    <button id="js-reset">Reset</button>
+  </div>
+</div>
 
-  <div class="flags-left" id="flags-left"></div>
-  <div id="result"></div>
-  <script src="js/main.js"></script>
+<div class="flags-left" id="flags-left"></div>
+<div id="result"></div>
+<script src="js/main.js"></script>
 
 </body>
 

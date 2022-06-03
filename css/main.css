@@ -168,7 +168,7 @@ textarea {
   display: flex;
   flex-wrap: wrap;
   background: gray;
-  margin: auto;
+  margin: 2rem auto auto;
 }
 
 .grid div {
@@ -265,3 +265,6 @@ textarea {
   padding-top: 1rem;
 }
 
+.font-bold {
+  font-weight: bold;
+}
