@@ -1,1 +1,1 @@
-minesweeper in javascript WIP
+minesweeper created in javascript
